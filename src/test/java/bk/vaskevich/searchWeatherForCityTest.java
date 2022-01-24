@@ -16,12 +16,11 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class searchWeatherForCityTest {
 
-
-    @ParameterizedTest(name = "search weather Ural city: {0}")
     @CsvSource(value = {
             "Екатеринбург, Погода в Екатеринбурге",
             "Нижний Тагил, Погода в Нижнем Тагиле"
     })
+    @ParameterizedTest(name = "Поиск погоды городов на Урале: {0}")
     public void serchWeatherUralCitiesTest(String city,String expected){
         open("https://rp5.ru/");
         $("#searchStr").setValue(city);
@@ -37,7 +36,7 @@ public class searchWeatherForCityTest {
         );
     }
 
-    @ParameterizedTest()
+    @ParameterizedTest(name="Поиск погоды городов Центральной России")
     @MethodSource("nameCity")
     public void serchWeatherCitiesTest(String city,String expected){
         open("https://rp5.ru/");
